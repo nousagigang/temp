@@ -12,7 +12,7 @@ title = "Nousagi Gang 🇵🇭"
   logo = "img/nousagi.png"
   # secondaryLogo = "img/secondary-logo.png"
   description = "Nousagi Gang website"
-  # copyright = "Copy, _right?_ :thinking_face:"
+  copyright = "2022-{ year } © Nousagi Gang 🇵🇭 All Rights Reserved"
 
 # [params.author]
 #   name = "Your name here"
