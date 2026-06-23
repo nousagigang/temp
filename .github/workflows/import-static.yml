@@ -1,4 +1,4 @@
-name: Import Assets Folder
+name: Import Static Folder
 
 on:
   workflow_dispatch:
@@ -7,11 +7,11 @@ permissions:
   contents: write
 
 jobs:
-  import-assets:
+  import-static:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main branch
+      - name: Checkout migration branch
         uses: actions/checkout@v4
         with:
           ref: main
@@ -19,21 +19,21 @@ jobs:
       - name: Clone source repo
         run: git clone --depth 1 https://github.com/k4lm3d/nsg.git source
 
-      - name: Replace assets folder
+      - name: Replace static folder
         run: |
-          rm -rf assets
-          cp -R source/assets ./assets
+          rm -rf static
+          cp -R source/static ./static
 
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add assets
+          git add static
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Import assets folder from k4lm3d/nsg"
+            git commit -m "Import static folder from k4lm3d/nsg"
             git push origin HEAD:main
           fi
