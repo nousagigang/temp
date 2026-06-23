@@ -2,16 +2,16 @@ disabled = false
 locale = "en"
 label = "English"
 weight = 1
-title = "Blowfish"
+title = "Nousagi Gang 🇵🇭"
 
 [params]
   displayName = "EN"
   isoCode = "en"
   rtl = false
   dateFormat = "2 January 2006"
-  # logo = "img/logo.png"
+  logo = "img/nousagi.png"
   # secondaryLogo = "img/secondary-logo.png"
-  # description = "My awesome website"
+  description = "Nousagi Gang website"
   # copyright = "Copy, _right?_ :thinking_face:"
 
 # [params.author]
