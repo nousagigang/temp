@@ -9,6 +9,8 @@ layout: page
 layoutBackgroundHeaderSpace: false
 ---
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas nulla quis velit scelerisque maximus. Aenean facilisis, elit id sagittis facilisis, sapien dui fringilla massa, tempor rhoncus diam purus commodo.
+
 ## Shortcode: `member-list`
 
 {{< member-list >}}
