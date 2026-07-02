@@ -5,7 +5,7 @@ draft: false
 description: Testing member-list shortcode of Nousagi Gang
 showDate: false
 showAuthor: false
-layout: page
+layout: "page"
 layoutBackgroundHeaderSpace: false
 ---
 
@@ -13,4 +13,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas nulla qui
 
 ## Shortcode: `member-list`
 
+### List every member (shows only with avatar image)
+
 {{< member-list >}}
+
+### List only members specified inside the `members=''` parameter
+
+{{< member-list members="black_ace,xythran,jude" >}}
+
+.
