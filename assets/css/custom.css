@@ -25,14 +25,22 @@ textarea:focus {
     --tw-ring-color: var(--primary-color) !important;
 }
 
+
 /* Custom CSS for member-list shortcode */
+
 .member-list {
     display: flex;
     flex-wrap: wrap;
     gap: .5rem;
 }
 
+.member-list__item {
+    display: block;
+    line-height: 0;
+}
+
 .member-list__item img {
+    display: block;
     width: 64px;
     height: 64px;
     border-radius: 50%;
