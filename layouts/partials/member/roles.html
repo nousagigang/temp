@@ -1,7 +1,0 @@
-{{- range .Params.roles -}}
-  {{- $style := index site.Data.member-roles . -}}
-
-  <span class="rounded-full px-2 py-1 text-xs {{ with $style }}{{ .color }}{{ end }}">
-    {{ . }}
-  </span>
-{{- end -}}

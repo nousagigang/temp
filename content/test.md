@@ -31,10 +31,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas nulla qui
 
 ### Several members
 
-{{< member-card members="black_ace,k4lm3d,xythran" >}}
+{{< member-card member="black-ace" >}}
 
-### Everyone
 
-{{< member-card >}}
 
 .
