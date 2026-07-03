@@ -15,6 +15,12 @@ layoutBackgroundHeaderSpace: false
 layoutBackgroundBlur: true
 showHero: true
 heroStyle: "background"
+rank: Techie
+status: Online
+joined: 2025-07-02
+roles:
+  - Netrunner
+  - Human
 ---
 
 {{< lead >}}
