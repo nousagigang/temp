@@ -16,14 +16,15 @@
     href="{{ $member.RelPermalink }}"
     class="group block rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition hover:shadow-lg dark:border-neutral-700 dark:bg-neutral-900">
 
-    <div class="flex items-start gap-5">
+    <div class="flex items-start gap-6 md:gap-8">
 
       {{ with $avatar }}
         <img
           src="{{ .RelPermalink }}"
           alt="{{ $member.Title }}"
           loading="lazy"
-          class="h-24 w-24 shrink-0 rounded-full object-cover ring-2 ring-neutral-200 dark:ring-neutral-700">
+          class="h-24 w-24 shrink-0 rounded-full object-cover ring-2 ring-neutral-200 dark:ring-neutral-700"
+        >
       {{ end }}
 
       <div class="min-w-0 flex-1">
