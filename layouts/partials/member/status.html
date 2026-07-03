@@ -1,0 +1,14 @@
+{{- $status := .Params.status -}}
+{{- $style := index site.Data.member-status $status -}}
+
+{{- if not $style -}}
+  {{- $style = dict
+      "badge" "bg-neutral-500/20 text-neutral-400"
+      "dot" "bg-neutral-400"
+  -}}
+{{- end -}}
+
+<span class="inline-flex items-center gap-2 rounded-full px-2 py-1 text-xs font-medium {{ $style.badge }}">
+  <span class="h-2 w-2 rounded-full {{ $style.dot }}"></span>
+  {{ $status }}
+</span>

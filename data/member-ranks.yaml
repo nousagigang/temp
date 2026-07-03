@@ -1,0 +1,23 @@
+Boss:
+  color: "text-red-400"
+
+Fixer:
+  color: "text-amber-400"
+
+Techie:
+  color: "text-cyan-400"
+
+Runner:
+  color: "text-emerald-400"
+
+Enforcer:
+  color: "text-rose-400"
+
+Muscle:
+  color: "text-orange-400"
+
+Street Kid:
+  color: "text-fuchsia-400"
+
+Neophyte:
+  color: "text-neutral-400"

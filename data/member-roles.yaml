@@ -1,0 +1,17 @@
+Founder:
+  color: "bg-yellow-500/20 text-yellow-400"
+
+Netrunner:
+  color: "bg-cyan-500/20 text-cyan-400"
+
+Human:
+  color: "bg-blue-500/20 text-blue-400"
+
+Bot:
+  color: "bg-purple-500/20 text-purple-400"
+
+Legacy:
+  color: "bg-neutral-500/20 text-neutral-400"
+
+Allied Operative:
+  color: "bg-pink-500/20 text-pink-400"
