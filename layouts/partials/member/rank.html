@@ -1,5 +1,5 @@
-{{ $rank := .Params.rank }}
-{{ $style := index site.Data.member-ranks $rank }}
+{{- $rank := .Params.rank -}}
+{{- $style := index site.Data.member-ranks $rank -}}
 
 <span class="font-semibold {{ with $style }}{{ .color }}{{ end }}">
   {{ $rank }}
