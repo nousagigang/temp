@@ -1,28 +1,73 @@
-{{- $filter := .Get "members" -}}
-{{- $single := .Get "member" -}}
+{{/* Get the member page */}}
+{{ $slug := .Get "member" }}
 
-<div class="grid gap-4">
-  {{- if $single -}}
+{{ with site.GetPage (printf "/members/%s" $slug) }}
 
-    {{- with site.GetPage (printf "/members/%s" $single) -}}
-      {{ partial "member/card.html" . }}
-    {{- end -}}
+  {{ $avatar := .Resources.GetMatch "avatar.*" }}
 
-  {{- else if $filter -}}
+  {{ $status := index site.Data.member-status .Params.status }}
+  {{ $rank := index site.Data.member-ranks .Params.rank }}
 
-    {{- range split $filter "," -}}
-      {{- $slug := strings.TrimSpace . -}}
-      {{- with site.GetPage (printf "/members/%s" $slug) -}}
-        {{ partial "member/card.html" . }}
-      {{- end -}}
-    {{- end -}}
+  <a
+    href="{{ .RelPermalink }}"
+    class="group flex items-start gap-4 rounded-xl border border-neutral-200 bg-neutral-100 p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-neutral-700 dark:bg-neutral-900">
 
-  {{- else -}}
+    {{ with $avatar }}
+      <img
+        src="{{ .RelPermalink }}"
+        alt="{{ $.Title }}"
+        loading="lazy"
+        class="h-20 w-20 shrink-0 rounded-full object-cover ring-2 ring-neutral-300 transition-transform duration-200 group-hover:scale-105 dark:ring-neutral-700">
+    {{ end }}
 
-    {{- $members := where site.RegularPages "Section" "members" -}}
-    {{- range sort $members "Title" -}}
-      {{ partial "member/card.html" . }}
-    {{- end -}}
+    <div class="min-w-0 flex-1">
 
-  {{- end -}}
-</div>
+      <h3 class="truncate text-lg font-semibold">
+        {{ .Title }}
+      </h3>
+
+      <p class="text-sm {{ with $rank }}{{ .color }}{{ end }}">
+        {{ .Params.rank }}
+      </p>
+
+      {{ with $status }}
+        <span class="mt-2 inline-flex items-center gap-2 rounded-full px-2 py-1 text-xs font-medium {{ .badge }}">
+          <span class="h-2 w-2 rounded-full {{ .dot }}"></span>
+          {{ $.Params.status }}
+        </span>
+      {{ end }}
+
+      {{ with .Params.roles }}
+        <div class="mt-3 flex flex-wrap gap-2">
+          {{ range . }}
+            {{ $role := index site.Data.member-roles . }}
+
+            <span class="rounded-full px-2 py-1 text-xs {{ with $role }}{{ .color }}{{ end }}">
+              {{ . }}
+            </span>
+
+          {{ end }}
+        </div>
+      {{ end }}
+
+      {{ with .Params.joined }}
+        <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">
+          Joined {{ time.Format ":date_long" . }}
+        </p>
+      {{ end }}
+
+    </div>
+
+    <span class="hidden self-center text-sm font-medium md:block">
+      View Profile →
+    </span>
+
+  </a>
+
+{{ else }}
+
+  <p class="text-sm text-red-500">
+    Member "{{ $slug }}" not found.
+  </p>
+
+{{ end }}
