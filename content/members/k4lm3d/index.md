@@ -16,7 +16,7 @@ layoutBackgroundBlur: true
 showHero: true
 heroStyle: "background"
 rank: Techie
-status: Online
+status: Active
 joined: 2025-07-02
 roles:
   - Netrunner
