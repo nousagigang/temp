@@ -21,4 +21,20 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas nulla qui
 
 {{< member-list members="black_ace,xythran,jude" >}}
 
+---
+
+## Member Card
+
+### Single member
+
+{{< member-card member="k4lm3d" >}}
+
+### Several members
+
+{{< member-card members="black_ace,k4lm3d,xythran" >}}
+
+### Everyone
+
+{{< member-card >}}
+
 .
