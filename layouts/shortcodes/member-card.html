@@ -5,8 +5,8 @@
 
   {{ $avatar := .Resources.GetMatch "avatar.*" }}
 
-  {{ $status := index site.Data.member-status .Params.status }}
-  {{ $rank := index site.Data.member-ranks .Params.rank }}
+  {{ $status := index site.Data.member_status .Params.status }}
+  {{ $rank := index site.Data.member_ranks .Params.rank }}
 
   <a
     href="{{ .RelPermalink }}"
@@ -40,7 +40,7 @@
       {{ with .Params.roles }}
         <div class="mt-3 flex flex-wrap gap-2">
           {{ range . }}
-            {{ $role := index site.Data.member-roles . }}
+            {{ $role := index site.Data.member_roles . }}
 
             <span class="rounded-full px-2 py-1 text-xs {{ with $role }}{{ .color }}{{ end }}">
               {{ . }}
