@@ -1,0 +1,28 @@
+{{- $filter := .Get "members" -}}
+{{- $single := .Get "member" -}}
+
+<div class="grid gap-4">
+  {{- if $single -}}
+
+    {{- with site.GetPage (printf "/members/%s" $single) -}}
+      {{ partial "member/card.html" . }}
+    {{- end -}}
+
+  {{- else if $filter -}}
+
+    {{- range split $filter "," -}}
+      {{- $slug := strings.TrimSpace . -}}
+      {{- with site.GetPage (printf "/members/%s" $slug) -}}
+        {{ partial "member/card.html" . }}
+      {{- end -}}
+    {{- end -}}
+
+  {{- else -}}
+
+    {{- $members := where site.RegularPages "Section" "members" -}}
+    {{- range sort $members "Title" -}}
+      {{ partial "member/card.html" . }}
+    {{- end -}}
+
+  {{- end -}}
+</div>
