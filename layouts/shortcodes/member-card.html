@@ -4,7 +4,6 @@
 {{ if $member }}
 
   {{ $avatar := $member.Resources.GetMatch "avatar.*" }}
-  {{ $background := $member.Resources.GetMatch "background.*" }}
 
   {{ $statuses := index hugo.Data "member-status" }}
   {{ $ranks := index hugo.Data "member-ranks" }}
@@ -15,64 +14,34 @@
 
   <a
     href="{{ $member.RelPermalink }}"
-    class="group relative block overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg dark:border-neutral-700 dark:bg-neutral-900">
+    class="group block rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition hover:shadow-lg dark:border-neutral-700 dark:bg-neutral-900">
 
-    {{ with $background }}
-      {{ $bg := .Fill "1200x600 Center" }}
+    <div class="flex items-start gap-6 md:gap-8">
 
-      <div class="absolute inset-0">
+      {{ with $avatar }}
         <img
-          src="{{ $bg.RelPermalink }}"
-          alt=""
-          aria-hidden="true"
-          class="h-full w-full scale-110 object-cover opacity-10 blur-md">
-      </div>
+          src="{{ .RelPermalink }}"
+          alt="{{ $member.Title }}"
+          loading="lazy"
+          class="h-24 w-24 shrink-0 rounded-full object-cover ring-2 ring-neutral-200 dark:ring-neutral-700"
+        >
+      {{ end }}
 
-      <div class="absolute inset-0 bg-white/75 dark:bg-neutral-900/75"></div>
-    {{ end }}
+      <div class="min-w-0 flex-1">
 
-    <div class="relative flex gap-6 p-6">
-
-      <!-- Avatar -->
-      <div class="member-avatar shrink-0">
-
-        {{ with $avatar }}
-          <img
-            src="{{ .RelPermalink }}"
-            alt="{{ $member.Title }}"
-            loading="lazy"
-            class="h-20 w-20 rounded-full object-cover ring-2 ring-primary-500/60 transition-transform duration-300 group-hover:scale-105">
-        {{ else }}
-          <div class="flex h-20 w-20 items-center justify-center rounded-full bg-neutral-200 text-2xl font-bold dark:bg-neutral-700">
-            {{ substr $member.Title 0 1 | upper }}
-          </div>
-        {{ end }}
-
-      </div>
-
-      <!-- Details -->
-      <div class="member-details flex-1 min-w-0">
-
-        <h3 class="truncate text-2xl font-bold tracking-tight">
+        <h3 class="text-2xl font-bold tracking-tight">
           {{ $member.Title }}
         </h3>
 
-        <div class="mt-2 flex flex-wrap items-center gap-4">
+        <div class="mt-2 flex flex-wrap items-center gap-3">
 
-          {{ with $rank }}
-            <span class="text-sm font-semibold {{ .color }}">
-              {{ $member.Params.rank }}
-            </span>
-          {{ end }}
+          <span class="text-sm font-semibold {{ with $rank }}{{ .color }}{{ end }}">
+            {{ $member.Params.rank }}
+          </span>
 
           {{ with $status }}
-            <span class="inline-flex items-center gap-2 rounded-md px-2 py-1 text-xs font-medium {{ .badge }}">
+            <span class="inline-flex items-center gap-2 rounded-full px-2 py-1 text-xs font-medium {{ .badge }}">
               <span class="h-2 w-2 rounded-full {{ .dot }}"></span>
-              {{ $member.Params.status }}
-            </span>
-          {{ else }}
-            <span class="inline-flex items-center gap-2 rounded-md bg-neutral-500/20 px-2 py-1 text-xs font-medium text-neutral-400">
-              <span class="h-2 w-2 rounded-full bg-neutral-400"></span>
               {{ $member.Params.status }}
             </span>
           {{ end }}
@@ -81,17 +50,15 @@
 
         {{ with $member.Params.roles }}
           <div class="mt-4 flex flex-wrap gap-2">
-
             {{ range . }}
 
               {{ $role := index $roles . }}
 
-              <span class="rounded-md border border-neutral-200 px-2.5 py-1 text-xs font-medium dark:border-neutral-700 {{ with $role }}{{ .color }}{{ else }}text-neutral-500{{ end }}">
+              <span class="rounded-md border border-neutral-200 px-2 py-1 text-xs dark:border-neutral-700 {{ with $role }}{{ .color }}{{ end }}">
                 {{ . }}
               </span>
 
             {{ end }}
-
           </div>
         {{ end }}
 
