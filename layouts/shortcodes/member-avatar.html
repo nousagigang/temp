@@ -1,0 +1,33 @@
+{{ $slug := .Get "member" }}
+{{ $member := .Page.Site.GetPage (printf "/members/%s" $slug) }}
+
+{{ if $member }}
+
+  {{ $avatar := $member.Resources.GetMatch "avatar.*" }}
+
+  <a
+    href="{{ $member.RelPermalink }}"
+    class="group inline-block">
+
+    {{ with $avatar }}
+      <img
+        src="{{ .RelPermalink }}"
+        alt="{{ $member.Title }}"
+        loading="lazy"
+        class="block h-24 w-24 rounded-full object-cover transition-transform duration-300 group-hover:scale-105">
+    {{ else }}
+      <div
+        class="flex h-24 w-24 items-center justify-center rounded-full bg-neutral-200 text-2xl font-bold text-neutral-500 dark:bg-neutral-700 dark:text-neutral-300">
+        {{ substr $member.Title 0 1 | upper }}
+      </div>
+    {{ end }}
+
+  </a>
+
+{{ else }}
+
+  <span class="text-sm text-red-500">
+    Member "{{ $slug }}" not found.
+  </span>
+
+{{ end }}

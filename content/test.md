@@ -33,6 +33,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas nulla qui
 
 {{< member-card member="black-ace" >}}
 
+---
 
+## Member Avatar
+
+{{< member-avatar member="k4lm3d" >}}
 
 .
